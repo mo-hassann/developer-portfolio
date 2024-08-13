@@ -58,15 +58,18 @@ export default function Terminal() {
     setTerminalLines((curValues) => [...curValues, inputValue]);
     setInputValue("");
     // show error message after while
-    setTimeout(() => {
+    const time1 = setTimeout(() => {
       setTerminalLines((curValues) => [...curValues, `The term '${inputValue}' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again. At line:1 char:1`]);
     }, 600);
     // show server success
-    setTimeout(() => {
+    const time2 = setTimeout(() => {
       setTerminalLines((curValues) => [...curValues, `✓ Compiled in ${(Math.random() * 1.5).toFixed(2)}s (${Math.floor(Math.random() * 1000)} modules)`]);
     }, 1000);
 
-    return clearTimeout(undefined);
+    return () => {
+      clearTimeout(time1);
+      clearTimeout(time2);
+    };
   };
 
   return (
