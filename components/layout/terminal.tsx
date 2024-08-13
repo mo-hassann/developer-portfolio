@@ -2,7 +2,6 @@
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
-import { TerminalInput } from "./terminal-input";
 
 export default function Terminal() {
   const [isFocused, setIsFocused] = useState(false);
@@ -14,16 +13,24 @@ export default function Terminal() {
   const inputRef = useRef<null | HTMLInputElement>(null);
   const spanRef = useRef<null | HTMLSpanElement>(null);
 
+  // input fucus
+  useEffect(() => {
+    if (inputRef.current && isFocused) {
+      inputRef.current.focus();
+    }
+  }, [isFocused]);
+
+  // change the input width while typing
   useEffect(() => {
     if (inputRef.current && spanRef.current) {
       // Set the span text to the input value
-      spanRef.current.textContent = inputValue || " ";
+      spanRef.current.textContent = inputValue || "";
       // Calculate and set the width of the input based on the span
       inputRef.current.style.width = `${spanRef.current.offsetWidth}px`;
     }
   }, [inputValue]);
 
-  // auto stack to the bottom
+  // auto scroll stack to the bottom
   useEffect(() => {
     if (!ref.current) return;
 
@@ -39,10 +46,28 @@ export default function Terminal() {
     };
   }, [pathname]);
 
-  // add elements every time the path name changes
+  // add lines to the terminal every time the path name changes
   useEffect(() => {
     setTerminalLines((curState) => [...curState, `GET ${pathname} in ${Math.floor(Math.random() * 1000)}ms`, `✓ Compiled in ${(Math.random() * 1.5).toFixed(2)}s (${Math.floor(Math.random() * 1000)} modules)`]);
   }, [pathname]);
+
+  // handle terminal input submit
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // add user input line
+    setTerminalLines((curValues) => [...curValues, inputValue]);
+    setInputValue("");
+    // show error message after while
+    setTimeout(() => {
+      setTerminalLines((curValues) => [...curValues, `The term '${inputValue}' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again. At line:1 char:1`]);
+    }, 600);
+    // show server success
+    setTimeout(() => {
+      setTerminalLines((curValues) => [...curValues, `✓ Compiled in ${(Math.random() * 1.5).toFixed(2)}s (${Math.floor(Math.random() * 1000)} modules)`]);
+    }, 1000);
+
+    return clearTimeout(undefined);
+  };
 
   return (
     <div className="border-t w-full text-xs h-full bg-muted overflow-hidden">
@@ -76,23 +101,14 @@ export default function Terminal() {
           );
         })}
         <li>
-          {/* <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setTerminalLines((curValues) => [...curValues, inputValue]);
-              setInputValue("");
-            }}
-            className="w-full flex items-center"
-          >
-            <input onChange={(e) => setInputValue(e.target.value)} value={inputValue} type="text" ref={inputRef} onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)} className="bg-inherit h-auto outline-none w-4 text-foreground overflow-hidden resize-none" />
+          <form onSubmit={handleSubmit} className="w-full flex items-center">
+            <input onChange={(e) => setInputValue(e.target.value)} value={inputValue} type="text" ref={inputRef} onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)} className="bg-inherit h-auto outline-none w-0 text-foreground overflow-hidden resize-none caret-muted" />
             <div className={cn("border w-1.5 h-4 border-foreground", isFocused && "bg-foreground")} />
           </form>
-          {/* Hidden span to measure the width of the text 
+          {/* Hidden span to measure the width of the text */}
           <span ref={spanRef} style={{ visibility: "hidden", whiteSpace: "pre", fontSize: "inherit", fontFamily: "inherit" }}>
             {inputValue || " "}
           </span>
-           */}
-          <TerminalInput />
         </li>
       </ul>
     </div>
