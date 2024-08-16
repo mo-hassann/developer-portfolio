@@ -1,26 +1,35 @@
-import Game from "@/components/game";
+import Image from "next/image";
+import Face from "./face";
+import { Button } from "@/components/ui/button";
 
 export default function HomeSection() {
   return (
-    <div id="home" className="size-full flex gap-14 p-4 items-center justify-center">
-      <div className="space-y-1 text-left [&_span]:text-secondary [&_span]:font-normal text-xl">
-        <span className="-ml-12">{"<body>"}</span>
-        <br />
-        <span className="-ml-6">{"<div>"}</span>
-        <p className="text-muted-foreground">
-          <span>{"<p>"}</span> Hi There 👋, I&apos;m <span>{"</p>"}</span>
-        </p>
-        <h1 className="text-4xl font-thin">
-          <span>{"<h1>"}</span>Mohamed Adel<span>{"</h1>"}</span>
-        </h1>
-        <h2 className="text-primary text-base">
-          <span>{"<h2>"}</span> Fullstack Web Developer <span>{"</h2>"}</span>
-        </h2>
-        <span className="-ml-6">{"</div>"}</span>
-        <br />
-        <span className="-ml-12">{"</body>"}</span>
+    <section id="home" className="relative min-h-full flex gap-28 p-6 items-center justify-center overflow-hidden">
+      <Image className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 text-transparent opacity-10 h-auto w-10/12" src="/grid.svg" alt="grid image" width={0} height={0} />
+
+      <div className="space-y-7 text-left text-xl">
+        <div className="-space-y-1">
+          <p>Hi There 👋, I&apos;m</p>
+          <h1 className="relative text-8xl">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-20 gradient-primary opacity-50 w-full h-10 blur-3xl" />
+            Mohamed Adel
+          </h1>
+          <h2 className="text-xl text-muted-foreground">
+            {"// "} The Developer for the <span className="text-secondary">{"{Web}"}</span>
+          </h2>
+        </div>
+        <div className="space-x-4">
+          <Button variant="gradientOutline">Contact Me</Button>
+          <Button className="bg-muted-foreground/5" variant="ghost">
+            Get My CV
+          </Button>
+        </div>
       </div>
-      <Game />
-    </div>
+      <div className="relative min-w-[350px] text-center text-9xl text-gradient-primary min-h-[150px]">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-20 gradient-primary opacity-50 size-[120px] rounded-full blur-3xl" />
+
+        <Face />
+      </div>
+    </section>
   );
 }

@@ -51,11 +51,8 @@
     --border: 215 27.9% 16.9%;
     --input: 215 27.9% 16.9%;
     --ring: 48deg 92.04% 39.41%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+
+    --gradient-primary: hsl(321.59deg 100% 53.14%), hsl(263.19deg 100% 68.04%), hsl(193.88deg 100% 50%);
   }
 }
 
@@ -69,11 +66,10 @@
   body {
     @apply bg-background text-foreground size-full;
   }
-
-  .code {
-    @apply text-secondary;
+  .gradient-primary {
+    background: linear-gradient(45deg, var(--gradient-primary));
   }
-  .quote {
-    @apply text-muted-foreground;
+  .text-gradient-primary {
+    @apply gradient-primary text-transparent bg-clip-text;
   }
 }

@@ -16,7 +16,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           <ResizablePanel defaultSize={91}>
             <div className="size-full flex overflow-y-auto scroll-smooth">
               <LinesNumber />
-              <div className="size-full p-3 ">{children}</div>
+              <div className="size-full">{children}</div>
             </div>
           </ResizablePanel>
           <ResizableHandle withHandle />
