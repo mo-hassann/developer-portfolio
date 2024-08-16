@@ -8,25 +8,25 @@ const navItems = [
   {
     id: 1,
     name: "_Home.ts",
-    path: "/",
+    path: "#home",
     icon: File,
   },
   {
     id: 2,
     name: "_About.ts",
-    path: "/about",
+    path: "#about",
     icon: File,
   },
   {
     id: 3,
     name: "_Projects.ts",
-    path: "/projects",
+    path: "#projects",
     icon: File,
   },
   {
     id: 3,
     name: "_Contact-Me.ts",
-    path: "/contact",
+    path: "#contact",
     icon: File,
     isRight: true,
   },
@@ -43,8 +43,8 @@ export default function Header() {
         {navItems.map((item) => {
           const isActive = (item.path.startsWith(path) && path !== "/") || item.path === path;
           return (
-            <Link key={item.id} href={item.path} className={cn("relative h-full min-w-40 border-x flex items-center justify-start gap-2 text-muted-foreground hover:bg-background px-4", isActive && "text-white bg-background hover:bg-background", item.isRight && "ml-auto")}>
-              <item.icon size={14} className="text-primary" /> {item.name} {isActive && <BorderActive />}
+            <Link key={item.id} href={item.path} scroll className={cn("relative h-full min-w-40 border-x flex items-center justify-start gap-2 text-muted-foreground hover:bg-background px-4", isActive && "text-white bg-background hover:bg-background", item.isRight && "ml-auto")}>
+              <item.icon size={14} className="text-primary-foreground" /> {item.name} {isActive && <BorderActive />}
             </Link>
           );
         })}
@@ -55,7 +55,7 @@ export default function Header() {
 
 const BorderActive = () => (
   <>
-    <div className="absolute top-0 left-0 w-full h-0.5 bg-primary" />
+    <div className="absolute top-0 left-0 w-full h-0.5 bg-primary-foreground" />
     <div className="absolute -bottom-0.5 left-0 w-full h-1 bg-background" />
   </>
 );

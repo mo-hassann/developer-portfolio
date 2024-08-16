@@ -38,8 +38,8 @@
     --card-foreground: 210 20% 98%;
     --popover: 224 71.4% 4.1%;
     --popover-foreground: 210 20% 98%;
-    --primary: 47.9 95.8% 53.1%;
-    --primary-foreground: 210 20% 98%;
+    --primary: 48deg 92.04% 39.41%;
+    --primary-foreground: 47.9 95.8% 53.1%;
     --secondary: 141.89deg 62.07% 49.74%;
     --secondary-foreground: 210 20% 98%;
     --muted: 224.2 70.4% 5.3%;
@@ -50,7 +50,7 @@
     --destructive-foreground: 210 20% 98%;
     --border: 215 27.9% 16.9%;
     --input: 215 27.9% 16.9%;
-    --ring: 263.4 70% 50.4%;
+    --ring: 48deg 92.04% 39.41%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -64,9 +64,16 @@
     @apply border-border;
   }
   html {
-    @apply size-full;
+    @apply size-full scroll-smooth;
   }
   body {
     @apply bg-background text-foreground size-full;
+  }
+
+  .code {
+    @apply text-secondary;
+  }
+  .quote {
+    @apply text-muted-foreground;
   }
 }

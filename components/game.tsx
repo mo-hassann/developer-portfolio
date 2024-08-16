@@ -54,7 +54,7 @@ export default function Game() {
       {!isStart && (
         <>
           <div className={cn("top-0 left-0 absolute size-full flex flex-col gap-1 items-center justify-center backdrop-blur-md z-[2]", isStart && "hidden")}>
-            <Button className="shadow-md rounded-full" size="lg" variant="outline" onClick={() => router.push("/contact")}>
+            <Button className="shadow-md rounded-full" size="lg" variant="outline" onClick={() => router.push("#contact")}>
               Contact Me
             </Button>
             <span className="text-secondary font-bold text-sm">OR</span>

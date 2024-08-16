@@ -13,14 +13,14 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <Sidebar />
 
         <ResizablePanelGroup direction="vertical" className="size-full">
-          <ResizablePanel defaultSize={96}>
-            <div className="size-full flex">
+          <ResizablePanel defaultSize={91}>
+            <div className="size-full flex overflow-y-auto scroll-smooth">
               <LinesNumber />
-              <div className="size-full p-3">{children}</div>
+              <div className="size-full p-3 ">{children}</div>
             </div>
           </ResizablePanel>
           <ResizableHandle withHandle />
-          <ResizablePanel defaultSize={4} minSize={4} maxSize={25}>
+          <ResizablePanel defaultSize={9} minSize={4} maxSize={25}>
             <Terminal />
           </ResizablePanel>
         </ResizablePanelGroup>

@@ -15,4 +15,4 @@ export default function Sidebar() {
   );
 }
 
-const BorderActive = () => <div className="absolute left-0 top-0 h-full w-0.5 bg-primary" />;
+const BorderActive = () => <div className="absolute left-0 top-0 h-full w-0.5 bg-primary-foreground" />;

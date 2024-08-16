@@ -48,12 +48,24 @@ export default function Terminal() {
 
   // add lines to the terminal every time the path name changes
   useEffect(() => {
-    setTerminalLines((curState) => [...curState, `GET ${pathname} in ${Math.floor(Math.random() * 1000)}ms`, `✓ Compiled in ${(Math.random() * 1.5).toFixed(2)}s (${Math.floor(Math.random() * 1000)} modules)`]);
+    const time1 = setTimeout(() => {
+      setTerminalLines((curValues) => [...curValues, `GET ${pathname} in ${Math.floor(Math.random() * 1000)}ms`]);
+    }, 600);
+    // show server success
+    const time2 = setTimeout(() => {
+      setTerminalLines((curValues) => [...curValues, `✓ Compiled in ${(Math.random() * 1.5).toFixed(2)}s (${Math.floor(Math.random() * 1000)} modules)`]);
+    }, 1000);
+
+    return () => {
+      clearTimeout(time1);
+      clearTimeout(time2);
+    };
   }, [pathname]);
 
   // handle terminal input submit
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!inputValue) return;
     // add user input line
     setTerminalLines((curValues) => [...curValues, inputValue]);
     setInputValue("");
@@ -80,7 +92,7 @@ export default function Terminal() {
         <li className="cursor-pointer hover:text-foreground">OUTPUT</li>
         <li className="cursor-pointer hover:text-foreground">DEBUG CONSOLE</li>
         <li className="relative text-foreground">
-          TERMINAL <div className="absolute -bottom-1 w-full h-0.5 bg-primary" />
+          TERMINAL <div className="absolute -bottom-1 w-full h-0.5 bg-primary-foreground" />
         </li>
         <li className="cursor-pointer hover:text-foreground">PORTS</li>
         <li className="cursor-pointer hover:text-foreground">GITLENS</li>
