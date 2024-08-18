@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Sidebar() {
   return (
     <div className="h-full border-r bg-muted flex flex-col justify-start flex-shrink-0">
-      <Link href="/" className={cn("relative size-14 flex items-center justify-center text-muted-foreground hover:bg-background", "text-white bg-background hover:bg-background")}>
+      <Link href="/" className={cn("relative size-14 flex items-center justify-center text-muted-foreground hover:bg-background", "text-foreground bg-background hover:bg-background")}>
         <BorderActive /> <Info />
       </Link>
       <Link href="/" className={cn("relative size-14 flex items-center justify-center text-muted-foreground hover:bg-background mt-auto")}>

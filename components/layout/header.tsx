@@ -41,7 +41,7 @@ export default function Header() {
         {navItems.map((item) => {
           const isActive = item.id === 1 || (item.path.startsWith(path) && path !== "/") || item.path === path;
           return (
-            <Link key={item.id} href={item.path} scroll className={cn("relative h-full min-w-40 border-x flex items-center justify-start gap-2 text-muted-foreground hover:bg-background px-4", isActive && "text-white bg-background hover:bg-background", item.isRight && "ml-auto")}>
+            <Link key={item.id} href={item.path} scroll className={cn("relative h-full min-w-40 border-x flex items-center justify-start gap-2 text-muted-foreground hover:bg-background px-4", isActive && "text-foreground bg-background hover:bg-background", item.isRight && "ml-auto")}>
               <item.icon size={14} className="text-primary-foreground" /> {item.name} {isActive && <BorderActive />}
             </Link>
           );
