@@ -53,7 +53,7 @@ export default function Header() {
 
 const BorderActive = () => (
   <>
-    <div className="absolute top-0 left-0 w-full h-1 gradient-primary" />
+    <div className="absolute top-0 left-0 w-full h-1 bg-bg-bg-gradient-primary" />
     <div className="absolute -bottom-0.5 left-0 w-full h-1 bg-background" />
   </>
 );

@@ -25,7 +25,7 @@
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.75rem;
 
-    --gradient-primary: hsl(321.59deg 100% 53.14%), hsl(263.19deg 100% 68.04%), hsl(193.88deg 100% 50%);
+    --bg-gradient-primary: hsl(321.59deg 100% 53.14%), hsl(263.19deg 100% 68.04%), hsl(193.88deg 100% 50%);
   }
 
   .dark {
@@ -63,10 +63,7 @@
   body {
     @apply bg-background text-foreground size-full overflow-hidden;
   }
-  .gradient-primary {
-    background: linear-gradient(45deg, var(--gradient-primary));
-  }
   .text-gradient-primary {
-    @apply gradient-primary text-transparent bg-clip-text;
+    @apply bg-gradient-primary text-transparent bg-clip-text;
   }
 }

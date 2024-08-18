@@ -74,6 +74,9 @@ const config = {
       gridTemplateRows: {
         "24": "repeat(24, minmax(0, 1fr))",
       },
+      backgroundImage: {
+        "gradient-primary": "linear-gradient(45deg, var(--gradient-primary))",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
