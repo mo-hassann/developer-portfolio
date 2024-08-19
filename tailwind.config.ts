@@ -76,6 +76,7 @@ const config = {
       },
       backgroundImage: {
         "gradient-primary": "linear-gradient(45deg, var(--gradient-primary))",
+        "gradient-secondary": "linear-gradient(357deg, var(--gradient-secondary))",
       },
     },
   },

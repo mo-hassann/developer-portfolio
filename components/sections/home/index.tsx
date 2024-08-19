@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function HomeSection() {
   return (
-    <section id="home" className="relative min-h-full flex flex-col lg:flex-row gap-28 p-6 items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-full flex flex-col lg:flex-row gap-28 p-6 items-center justify-center overflow-hidden container">
       {/* grid image behind */}
       <Image className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 text-transparent opacity-10 h-auto w-10/12 max-w-[1250px]" src="/svgs/grid.svg" alt="grid image" width={0} height={0} />
 

@@ -19,8 +19,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               <div className="size-full">{children}</div>
             </div>
           </ResizablePanel>
-          <ResizableHandle withHandle />
-          <ResizablePanel defaultSize={9} minSize={4} maxSize={25}>
+          <ResizableHandle className="hidden sm:block" withHandle />
+          <ResizablePanel className="hidden sm:block" defaultSize={9} minSize={4} maxSize={25}>
             <Terminal />
           </ResizablePanel>
         </ResizablePanelGroup>

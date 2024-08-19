@@ -1,18 +1,18 @@
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-import React from "react";
+
+import Link from "next/link";
 
 export default function AboutSection() {
   return (
-    <div id="about" className="w-full py-12 bg-muted">
+    <div id="about" className="w-full py-12 my-12 bg-muted">
       <h1 className="text-center text-5xl mb-12">
         <span className="text-gradient-primary">{"-{ "}</span>
         About Me
         <span className="text-gradient-primary">{" }-"}</span>
       </h1>
 
-      <div className="flex gap-9 items-center w-10/12 mx-auto p-5 rounded-lg">
+      <div className="flex gap-9 items-center flex-col lg:flex-row w-10/12 mx-auto p-5 rounded-lg container">
         <div className="relative flex-shrink-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-primary opacity-50 size-[120px] rounded-full blur-3xl" />
           <div className="rounded-full size-[200px] bg-gradient-primary p-0.5">
@@ -23,7 +23,8 @@ export default function AboutSection() {
         <div className="space-y-4">
           <h2 className="text-3xl font-bold">
             <span className="text-secondary">{"< "}</span>
-            Who I&apos;m
+
+            <span className="text-gradient-secondary">Who I&apos;m</span>
             <span className="text-secondary">{" />"}</span>
           </h2>
           <p className="text-muted-foreground">
@@ -32,7 +33,7 @@ export default function AboutSection() {
           </p>
         </div>
       </div>
-      <div className="flex gap-4 items-center justify-between text-center w-3/5 max-w-[900px] h-[100px] mx-auto mt-7 p-5">
+      <div className="flex gap-4 items-center justify-between text-center w-3/5 max-w-[900px] h-[100px] mx-auto mt-7 mb-10 p-5">
         <div className="space-y-1">
           <p className="text-muted-foreground">PROJECTS-COMPLETED</p>
           <p className="text-4xl font-bold">+100</p>
@@ -48,7 +49,6 @@ export default function AboutSection() {
           <p className="text-4xl font-bold">+7</p>
         </div>
       </div>
-      {/* TODO: add technologies i use */}
     </div>
   );
 }

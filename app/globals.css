@@ -25,7 +25,8 @@
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.75rem;
 
-    --bg-gradient-primary: hsl(321.59deg 100% 53.14%), hsl(263.19deg 100% 68.04%), hsl(193.88deg 100% 50%);
+    --gradient-primary: hsl(321.59deg 100% 53.14%), hsl(263.19deg 100% 68.04%), hsl(193.88deg 100% 50%);
+    --gradient-secondary: hsl(0, 0%, 100%), hsl(var(--muted-foreground));
   }
 
   .dark {
@@ -48,8 +49,6 @@
     --border: 215 27.9% 16.9%;
     --input: 215 27.9% 16.9%;
     --ring: 48deg 92.04% 39.41%;
-
-    --gradient-primary: hsl(321.59deg 100% 53.14%), hsl(263.19deg 100% 68.04%), hsl(193.88deg 100% 50%);
   }
 }
 
@@ -65,5 +64,8 @@
   }
   .text-gradient-primary {
     @apply bg-gradient-primary text-transparent bg-clip-text;
+  }
+  .text-gradient-secondary {
+    @apply bg-gradient-secondary text-transparent bg-clip-text;
   }
 }
