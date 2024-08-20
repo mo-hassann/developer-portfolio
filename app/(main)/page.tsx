@@ -1,4 +1,3 @@
-import Game from "@/components/game";
 import AboutSection from "@/components/sections/about";
 import ContactSection from "@/components/sections/contact";
 import HomeSection from "@/components/sections/home";
