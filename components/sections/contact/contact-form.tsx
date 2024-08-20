@@ -9,14 +9,23 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-type props = {
-  formSchema: ZodObject<any>;
-  defaultValues: Record<string, string>;
-  setFormState: any;
-  formState: any;
+const formSchema = z.object({
+  name: z.string().min(2, {
+    message: "// Username must be at least 2 characters.",
+  }),
+  email: z.string().email({ message: "// Please enter a valid email." }),
+  message: z.string().min(1, {
+    message: "// please enter any message to submit",
+  }),
+});
+
+const defaultValues: z.infer<typeof formSchema> = {
+  name: "",
+  email: "",
+  message: "",
 };
 
-export function ContactForm({ formSchema, defaultValues, setFormState, formState }: props) {
+export function ContactForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues,
@@ -38,7 +47,7 @@ export function ContactForm({ formSchema, defaultValues, setFormState, formState
             <FormItem>
               <FormLabel>_Name</FormLabel>
               <FormControl>
-                <Input {...field} value={formState.name} onChange={(e) => setFormState((state: any) => ({ ...state, name: e.target.value }))} placeholder="Your-Name" />
+                <Input placeholder="Your-Name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -51,7 +60,7 @@ export function ContactForm({ formSchema, defaultValues, setFormState, formState
             <FormItem>
               <FormLabel>_Email</FormLabel>
               <FormControl>
-                <Input placeholder="your-email@email.com" {...field} value={formState.email} onChange={(e) => setFormState((state: any) => ({ ...state, email: e.target.value }))} />
+                <Input placeholder="your-email@email.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -64,13 +73,15 @@ export function ContactForm({ formSchema, defaultValues, setFormState, formState
             <FormItem>
               <FormLabel>_Message</FormLabel>
               <FormControl>
-                <Textarea placeholder="Let's Work Together!" className="resize-y max-h-44" {...field} value={formState.message} onChange={(e) => setFormState((state: any) => ({ ...state, message: e.target.value }))} />
+                <Textarea placeholder="Let's Work Together!" className="resize-y max-h-44" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button className="block ml-auto" type="submit">
+          Submit
+        </Button>
       </form>
     </Form>
   );

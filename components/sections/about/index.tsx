@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function AboutSection() {
   return (
-    <div id="about" className="w-full py-12 my-12 bg-muted">
+    <div id="about" className="w-full py-12 my-32 bg-muted">
       <h1 className="text-center text-5xl mb-12">
         <span className="text-gradient-primary">{"-{ "}</span>
         About Me

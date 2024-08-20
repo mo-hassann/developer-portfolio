@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { Button } from "./ui/button";
 import { Play, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export default function Game() {
   const ref = useRef<HTMLCanvasElement | null>(null);
@@ -54,7 +54,18 @@ export default function Game() {
       {!isStart && (
         <>
           <div className={cn("top-0 left-0 absolute size-full flex flex-col gap-1 items-center justify-center backdrop-blur-md z-[2]", isStart && "hidden")}>
-            <Button className="shadow-md rounded-full" size="lg" variant="outline" onClick={() => router.push("#contact")}>
+            <Button
+              className="shadow-md rounded-full"
+              size="lg"
+              variant="outline"
+              onClick={() => {
+                setIsStart(true);
+                setGameTimer(defaultGameTimerValue);
+              }}
+            >
+              Play a Game
+            </Button>
+            {/*             <Button className="shadow-md rounded-full" size="lg" variant="outline" onClick={() => router.push("#contact")}>
               Contact Me
             </Button>
             <span className="text-secondary font-bold text-sm">OR</span>
@@ -68,7 +79,7 @@ export default function Game() {
               }}
             >
               {`//`} Play a Game
-            </Button>
+            </Button> */}
           </div>
           <div className="absolute size-2 right-20 top-8 bg-rose-600" />
           <div className="absolute w-2 h-12 right-14 bottom-9 bg-emerald-600" />

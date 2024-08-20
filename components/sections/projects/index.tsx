@@ -7,7 +7,7 @@ import { ExternalLink, Globe } from "lucide-react";
 
 export default function ProjectsSection() {
   return (
-    <div id="projects" className="w-full p-12 flex justify-between container">
+    <div id="projects" className="w-full p-12 flex justify-between container my-32">
       <div>
         <div className="sticky top-8">
           {/* grid image behind */}
