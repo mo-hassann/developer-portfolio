@@ -34,14 +34,14 @@ export default function Game({ turnsLeft, setTurnsLeft }: props) {
         setGameTimer((curState) => {
           if (curState > 0) return curState - 1;
           else {
-            setIsStart(false);
+            onGameChange();
             return 0;
           }
         });
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, [isStart]);
+  }, [isStart, onGameChange]);
 
   if (turnsLeft === 0) return;
 

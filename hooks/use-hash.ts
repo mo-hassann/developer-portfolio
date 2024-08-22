@@ -12,7 +12,7 @@ export default function useHash() {
   }, [params]);
 
   const updateHash = (newHash: string) => {
-    router.push(`#${newHash}`);
+    router.push(`#${newHash}`, { scroll: false });
   };
 
   return { hash, updateHash };

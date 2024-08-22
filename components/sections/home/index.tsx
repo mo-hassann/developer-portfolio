@@ -1,10 +1,19 @@
+"use client";
 import Image from "next/image";
 import Face from "./face";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import useCurSection from "@/hooks/use-cur-section";
+import { useRef } from "react";
 
 export default function HomeSection() {
+  const router = useRouter();
+  const ref = useRef(null);
+  useCurSection(ref);
+
   return (
-    <section id="home" className="relative min-h-full flex flex-col lg:flex-row gap-28 p-6 items-center justify-center overflow-hidden container">
+    <section id="home" ref={ref} className="relative min-h-full flex flex-col lg:flex-row gap-28 p-6 items-center justify-center overflow-hidden container">
       {/* grid image behind */}
       <Image className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 text-transparent opacity-10 h-auto w-10/12 max-w-[1250px]" src="/svgs/grid.svg" alt="grid image" width={0} height={0} />
 
@@ -14,25 +23,44 @@ export default function HomeSection() {
           <h1 className="relative text-8xl">
             {/* blur background colors behind */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-20 bg-gradient-primary opacity-50 w-full h-10 blur-3xl" />
-            Mohamed Adel
+            <TextAnimation>Mohamed Adel</TextAnimation>
           </h1>
           <h2 className="text-xl text-muted-foreground">
             {"// "} The Developer for the <span className="text-secondary">{"{Web}"}</span>
           </h2>
         </div>
         <div className="space-x-4">
-          <Button variant="gradientOutline">See My Work</Button>
+          <Button
+            onClick={() => {
+              router.push("#projects");
+            }}
+            variant="gradientOutline"
+          >
+            See My Work
+          </Button>
           <Button className="bg-muted-foreground/5" variant="ghost">
             Get My CV
           </Button>
         </div>
       </div>
-      <div className="relative min-w-[350px] text-center text-9xl min-h-[150px]">
+      <motion.div variants={{ animation: { rotate: 360 }, initial: { scale: 1 } }} animate={{}} transition={{ duration: 2 }} className="relative min-w-[350px] text-center text-9xl min-h-[150px]">
         {/* blur background colors behind */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-20 bg-gradient-primary opacity-50 size-[120px] rounded-full blur-3xl" />
 
         <Face />
-      </div>
+      </motion.div>
     </section>
   );
 }
+
+const TextAnimation = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="overflow-hidden relative">
+      <motion.div className="absolute top-0 left-0 h-full w-full bg-gradient-primary origin-left" initial={{ scaleX: 1 }} animate={{ scaleX: [1, 0] }} transition={{ duration: 0.5 }} />
+
+      <motion.div initial={{ y: "-100%", opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.3 }}>
+        {children}
+      </motion.div>
+    </div>
+  );
+};

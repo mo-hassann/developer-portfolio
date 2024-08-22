@@ -1,11 +1,14 @@
+"use client";
 import { Separator } from "@/components/ui/separator";
+import useCurSection from "@/hooks/use-cur-section";
 import Image from "next/image";
-
-import Link from "next/link";
+import { useRef } from "react";
 
 export default function AboutSection() {
+  const ref = useRef(null);
+  useCurSection(ref);
   return (
-    <div id="about" className="w-full py-12 my-32 bg-muted">
+    <div ref={ref} id="about" className="w-full py-12 my-32 bg-muted">
       <h1 className="text-center text-5xl mb-12">
         <span className="text-gradient-primary">{"-{ "}</span>
         About Me
