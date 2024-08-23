@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import useCurSection from "@/hooks/use-cur-section";
 import { useRef } from "react";
+import data from "@/data";
 
 export default function HomeSection() {
   const router = useRouter();
@@ -13,20 +14,20 @@ export default function HomeSection() {
   useCurSection(ref);
 
   return (
-    <section id="home" ref={ref} className="relative min-h-full flex flex-col lg:flex-row gap-28 p-6 items-center justify-center overflow-hidden container">
+    <section id="home" ref={ref} className="relative min-h-full flex flex-col lg:flex-row gap-28 p-6 items-center justify-center overflow-hidden container text-center md:text-left">
       {/* grid image behind */}
       <Image className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 text-transparent opacity-10 h-auto w-10/12 max-w-[1250px]" src="/svgs/grid.svg" alt="grid image" width={0} height={0} />
 
-      <div className="space-y-7 text-left text-xl">
+      <div className="space-y-7 text-center md:text-left md:text-xl">
         <div className="-space-y-1">
           <p>Hi There 👋, I&apos;m</p>
-          <h1 className="relative text-8xl">
+          <h1 className="relative text-6xl md:text-8xl">
             {/* blur background colors behind */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-20 bg-gradient-primary opacity-50 w-full h-10 blur-3xl" />
-            <TextAnimation>Mohamed Adel</TextAnimation>
+            <TextAnimation>{data.home.name}</TextAnimation>
           </h1>
-          <h2 className="text-xl text-muted-foreground">
-            {"// "} The Developer for the <span className="text-secondary">{"{Web}"}</span>
+          <h2 className="text-muted-foreground">
+            {"// "} {data.home.description.split(/#(\w+)/g).map((e, i) => (i % 2 === 0 ? e : <span key={`wrapped_${i}`} className="text-secondary">{`{${e}}`}</span>))}
           </h2>
         </div>
         <div className="space-x-4">

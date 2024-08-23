@@ -17,7 +17,7 @@ type props = {
 
 export default function ProjectCard({ project }: props) {
   return (
-    <div className="w-[500px] rounded-2xl bg-muted border sticky top-8">
+    <div className="w-full max-w-[500px] rounded-2xl bg-muted border sticky top-8">
       <div className="flex justify-between flex-shrink-0 px-4 pt-2">
         <div className="flex items-center gap-2 text-muted-foreground">
           <Globe size={18} />

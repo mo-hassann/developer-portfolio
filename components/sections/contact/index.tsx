@@ -12,14 +12,14 @@ export default function ContactSection() {
   useCurSection(ref, 0.5);
   return (
     <div ref={ref} id="contact" className="w-full container py-32">
-      <h1 className="text-center text-4xl mb-12">
+      <h1 className="text-center text-2xl md:text-4xl mb-12">
         <span className="text-gradient-primary">{"-{ "}</span>
         Contact Me
         <span className="text-gradient-primary">{" }-"}</span>
       </h1>
       <div className="flex items-center justify-around w-full h-full">
         {gameTurnsLeft > 0 && (
-          <div className="flex flex-col items-center gap-2 text-center max-w-[400px]">
+          <div className="hidden lg:flex flex-col items-center gap-2 text-center max-w-[400px]">
             <h1 className="text-gradient-primary text-4xl">Still Not Sure About Contacting Me?</h1>
             <p className="text-muted-foreground mb-6">{"// "}you can play a game while thinking</p>
 

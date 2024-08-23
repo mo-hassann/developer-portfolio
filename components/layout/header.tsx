@@ -1,7 +1,7 @@
 "use client";
 import useHash from "@/hooks/use-hash";
 import { cn } from "@/lib/utils";
-import { File } from "lucide-react";
+import { File, FormInput, Home, LucideSend, User } from "lucide-react";
 import Link from "next/link";
 
 const navItems = [
@@ -9,13 +9,13 @@ const navItems = [
     id: 1,
     name: "_Home.ts",
     path: "#home",
-    icon: File,
+    icon: Home,
   },
   {
     id: 2,
     name: "_About.ts",
     path: "#about",
-    icon: File,
+    icon: User,
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const navItems = [
     id: 3,
     name: "_Contact-Me.ts",
     path: "#contact",
-    icon: File,
+    icon: LucideSend,
     isRight: true,
   },
 ];
@@ -42,8 +42,9 @@ export default function Header() {
         {navItems.map((item) => {
           const isActive = item.path === hash || (item.path === "#home" && hash === "");
           return (
-            <Link key={item.id} href={item.path} scroll className={cn("relative h-full min-w-40 border-x flex items-center justify-start gap-2 text-muted-foreground hover:bg-background px-4", isActive && "text-foreground bg-background hover:bg-background", item.isRight && "ml-auto")}>
-              <item.icon size={14} className="text-primary-foreground" /> {item.name} {isActive && <BorderActive />}
+            <Link key={item.id} href={item.path} scroll className={cn("relative h-full w-fit md:min-w-40 border-x flex items-center justify-start gap-2 text-muted-foreground hover:bg-background px-4", isActive && "text-foreground bg-background hover:bg-background", item.isRight && "ml-auto")}>
+              <item.icon size={14} className="text-primary-foreground" />
+              <span className="hidden md:inline">{item.name}</span> {isActive && <BorderActive />}
             </Link>
           );
         })}
