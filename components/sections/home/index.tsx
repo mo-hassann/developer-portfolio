@@ -12,7 +12,7 @@ import Link from "next/link";
 export default function HomeSection() {
   const router = useRouter();
   const ref = useRef(null);
-  useCurSection(ref);
+  const isInView = useCurSection(ref);
 
   return (
     <section id="home" ref={ref} className="relative min-h-full flex flex-col lg:flex-row gap-28 p-6 items-center justify-center overflow-hidden container text-center md:text-left">
@@ -28,7 +28,7 @@ export default function HomeSection() {
             <TextAnimation>{data.home.name}</TextAnimation>
           </h1>
           <h2 className="text-muted-foreground">
-            {"// "} {data.home.description.split(/#(\w+)/g).map((e, i) => (i % 2 === 0 ? e : <span key={`wrapped_${i}`} className="text-secondary">{`{${e}}`}</span>))}
+            {"// "} {data.home.description.split(/#(\w+)/g).map((e, i) => (i % 2 === 0 ? e : <span key={`wrapped_${i}`} className="text-secondary">{`{${e.replaceAll("__", "-").replaceAll("_", " ")}}`}</span>))}
           </h2>
         </div>
         <div className="space-x-4">
@@ -47,7 +47,7 @@ export default function HomeSection() {
           )}
         </div>
       </div>
-      <motion.div variants={{ animation: { rotate: 360 }, initial: { scale: 1 } }} animate={{}} transition={{ duration: 2 }} className="relative min-w-[350px] text-center text-9xl min-h-[150px]">
+      <motion.div variants={{ initial: { opacity: 0, scale: 0, y: "-20%" }, end: { opacity: 1, scale: 1, y: ["70%", 0] } }} initial="initial" animate="end" transition={{ duration: 1 }} className="relative min-w-[350px] text-center text-9xl min-h-[150px]">
         {/* blur background colors behind */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-20 bg-gradient-primary opacity-50 size-[120px] rounded-full blur-3xl" />
 

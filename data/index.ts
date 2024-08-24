@@ -3,8 +3,8 @@ import { Github } from "lucide-react";
 const data = {
   home: {
     name: "Mohamed Hassan",
-    description: "The Developer for the #Web",
-    cvLink: "",
+    description: "The #full__stack developer who builds things for #the_Web.", // # -> for css style, _ -> create space, __ -> creates dash
+    cvLink: "asdf",
   },
   sidebar: {
     links: [
@@ -19,6 +19,11 @@ const data = {
     description:
       " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad tenetur expedita eius unde. Esse accusamus a, earum quia, eius, debitis possimus iste natus saepe aliquid quasi. Consequatur reiciendis, illo alias quaerat facere vitae exercitationem rem!",
     image: "/imgs/about-image.png",
+    numbers: [
+      { name: "PROJECTS-COMPLETED", number: 100 },
+      { name: "TASk-COMPLETED", number: 150 },
+      { name: "TODOS-COMPLETED", number: 7 },
+    ],
   },
   projects: {
     description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id incidunt voluptatibus.",

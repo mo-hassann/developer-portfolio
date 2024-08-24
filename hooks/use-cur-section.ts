@@ -13,4 +13,6 @@ export default function useCurSection(curSectionRef: RefObject<Element>, amount:
 
     return () => clearTimeout(timeout);
   });
+
+  return isInView;
 }

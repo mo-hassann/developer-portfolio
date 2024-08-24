@@ -3,7 +3,9 @@ import { Separator } from "@/components/ui/separator";
 import data from "@/data";
 import useCurSection from "@/hooks/use-cur-section";
 import Image from "next/image";
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
+import { motion } from "framer-motion";
+import AnimatedCounter from "./animated-counter";
 
 export default function AboutSection() {
   const ref = useRef(null);
@@ -18,10 +20,10 @@ export default function AboutSection() {
 
       <div className="flex gap-9 items-center flex-col lg:flex-row w-10/12 mx-auto p-5 rounded-lg container">
         <div className="relative flex-shrink-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-primary opacity-50 size-[120px] rounded-full blur-3xl" />
-          <div className="rounded-full size-[200px] bg-gradient-primary p-0.5">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1, ease: "easeIn" }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-primary opacity-50 size-[120px] rounded-full blur-3xl" />
+          <motion.div initial={{ x: "-200%" }} animate={{ x: 0 }} transition={{ duration: 0.5, ease: "easeInOut" }} className="rounded-full size-[200px] bg-gradient-primary p-0.5">
             <Image className="size-full rounded-full grayscale hover:grayscale-0 transition-all" width={600} height={600} alt="about profile image" src={data.about.image} />
-          </div>
+          </motion.div>
         </div>
 
         <div className="space-y-4 text-center lg:text-left">
@@ -31,44 +33,25 @@ export default function AboutSection() {
             <span className="text-gradient-secondary">Who I&apos;m</span>
             <span className="text-secondary">{" />"}</span>
           </h2>
-          <p className="text-muted-foreground">{data.about.description}</p>
+          <motion.p initial={{ y: "-20%", opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.7, ease: "easeIn", duration: 0.5 }} className="text-muted-foreground">
+            {data.about.description}
+          </motion.p>
         </div>
       </div>
       <div className="flex gap-4 items-center justify-between text-center w-full md:w-3/5 max-w-[900px] h-[100px] m-0 md:mx-auto md:mt-7 mb-10 p-5">
-        <div className="space-y-1">
-          <p className="text-muted-foreground">PROJECTS-COMPLETED</p>
-          <p className="text-2xl md:text-4xl font-bold">+100</p>
-        </div>
-        <Separator orientation="vertical" />
-        <div className="space-y-1">
-          <p className="text-muted-foreground">TASk-COMPLETED</p>
-          <p className="text-2xl md:text-4xl font-bold">+150</p>
-        </div>
-        <Separator orientation="vertical" />
-        <div className="space-y-1">
-          <p className="text-muted-foreground">TODOS-COMPLETED</p>
-          <p className="text-2xl md:text-4xl font-bold">+7</p>
-        </div>
+        {data.about.numbers.map((number, i, arr) => (
+          <Fragment key={number.name}>
+            <div className="space-y-1">
+              <p className="text-muted-foreground">{number.name}</p>
+              <p className="text-2xl md:text-4xl font-bold">
+                +<AnimatedCounter from={0} to={number.number} />
+              </p>
+            </div>
+            {/* hide separator on the last child */}
+            {i + 1 < arr.length && <Separator orientation="vertical" />}
+          </Fragment>
+        ))}
       </div>
     </div>
   );
 }
-
-/* 
-      <div className="grid gap-4 w-full max-w-[1600px] h-full lg:min-h-[1000px] min-h-[60vw] mx-auto grid-cols-24 px-8">
-        <div className="col-span-7 row-span-6 bg-muted border rounded-md p-7">a</div>
-        <div className="col-span-11 row-span-3 bg-muted border rounded-md p-7 flex flex-col justify-between">
-          <h2 className="text-5xl font-bold">Who I&apos;m</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum obcaecati dignissimos quasi, dolores porro commodi odit dolorem molestiae laborum reiciendis sapiente numquam odio voluptas delectus cupiditate expedita consequatur minima labore! Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Delectus, possimus adipisci! Facere quia dolore nesciunt velit, ea quasi. Dolor cupiditate optio, consectetur eum iure impedit quos aliquam quasi veniam pariatur.
-          </p>
-        </div>
-        <div className="col-span-6 row-span-2 bg-background border rounded-md p-7">c</div>
-        <div className="col-span-6 row-span-3 bg-background border rounded-md p-7">d</div>
-        <div className="col-span-7 row-span-3 bg-background border rounded-md p-7">e</div>
-        <div className="col-span-4 row-span-3 bg-muted border rounded-md p-7">f</div>
-        <div className="col-span-6 row-span-1 bg-muted border rounded-md p-7">g</div>
-      </div>
-
-*/
