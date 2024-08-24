@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import useCurSection from "@/hooks/use-cur-section";
 import { useRef } from "react";
 import data from "@/data";
+import Link from "next/link";
 
 export default function HomeSection() {
   const router = useRouter();
@@ -39,9 +40,11 @@ export default function HomeSection() {
           >
             See My Work
           </Button>
-          <Button className="bg-muted-foreground/5" variant="ghost">
-            Get My CV
-          </Button>
+          {data.home.cvLink && (
+            <Button asChild className="bg-muted-foreground/5" variant="ghost">
+              <Link href={data.home.cvLink}>Get My CV</Link>
+            </Button>
+          )}
         </div>
       </div>
       <motion.div variants={{ animation: { rotate: 360 }, initial: { scale: 1 } }} animate={{}} transition={{ duration: 2 }} className="relative min-w-[350px] text-center text-9xl min-h-[150px]">

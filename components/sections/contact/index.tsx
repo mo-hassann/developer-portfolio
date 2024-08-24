@@ -5,6 +5,7 @@ import { ContactForm } from "./contact-form";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import useCurSection from "@/hooks/use-cur-section";
+import data from "@/data";
 
 export default function ContactSection() {
   const [gameTurnsLeft, setGameTurnsLeft] = useState(1);
@@ -31,7 +32,7 @@ export default function ContactSection() {
           <div className="flex justify-between flex-shrink-0 px-4 pt-2">
             <div className="flex items-center gap-2 text-muted-foreground">
               <Globe size={18} />
-              <span>contact-form</span>
+              <span>{data.contact.email}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="block rounded-full size-3 bg-green-500 ml-auto" />

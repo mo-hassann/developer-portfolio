@@ -1,3 +1,4 @@
+import data from "@/data";
 import { cn } from "@/lib/utils";
 import { File, Github, Info } from "lucide-react";
 import Link from "next/link";
@@ -8,9 +9,14 @@ export default function Sidebar() {
       <Link href="/" className={cn("relative size-14 flex items-center justify-center text-muted-foreground hover:bg-background", "text-foreground bg-background hover:bg-background")}>
         <BorderActive /> <Info />
       </Link>
-      <Link href="/" className={cn("relative size-14 flex items-center justify-center text-muted-foreground hover:bg-background mt-auto")}>
-        <Github />
-      </Link>
+      {data.sidebar.links.map(
+        (link) =>
+          link.link && (
+            <Link key={link.name} href={link.link} target="_blank" className={cn("relative size-14 flex items-center justify-center text-muted-foreground hover:bg-background mt-auto")}>
+              <link.icon />
+            </Link>
+          )
+      )}
     </div>
   );
 }

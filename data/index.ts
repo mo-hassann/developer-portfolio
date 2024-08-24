@@ -1,7 +1,19 @@
+import { Github } from "lucide-react";
+
 const data = {
   home: {
-    name: "Mohamed Adel",
+    name: "Mohamed Hassan",
     description: "The Developer for the #Web",
+    cvLink: "",
+  },
+  sidebar: {
+    links: [
+      {
+        name: "git hub",
+        link: "https://github.com/mo-hassann",
+        icon: Github,
+      },
+    ],
   },
   about: {
     description:
@@ -146,6 +158,9 @@ const data = {
         link: "https://en.wikipedia.org/wiki/MongoDB",
       },
     ],
+  },
+  contact: {
+    email: "mohamed.hassan.bu@gmail.com",
   },
 };
 
