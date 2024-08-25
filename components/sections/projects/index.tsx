@@ -25,7 +25,7 @@ export default function ProjectsSection() {
           <p className="w-[400px] text-muted-foreground">{data.projects.description}</p>
         </div>
       </div>
-      <div className="space-y-[800px]">
+      <div className="space-y-[100vh]">
         {data.projects.projects.map((project) => (
           <ProjectCard key={project.title} project={project} />
         ))}
