@@ -1,38 +1,98 @@
-# portofolio website with next js
+![alt text](https://github.com/mo-hassann/my-portfolio/blob/master/public/projects-imgs/portfolio.png)
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Developer Portfolio
 
-## Getting Started
+A modern and responsive developer portfolio built using Next.js and Framer Motion. This portfolio showcases projects, skills, and contact information, with smooth animations and transitions for an engaging user experience.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Responsive Design**: Optimized for all devices, ensuring a great user experience on mobile, tablet, and desktop.
+- **Smooth Animations**: Powered by Framer Motion for seamless animations and transitions, enhancing the visual appeal of the portfolio.
+- **Project Showcase**: Display your projects with descriptions, images, and links to GitHub repositories or live demos.
+- **Skills Section**: Highlight your technical skills with interactive animations.
+- **Contact Form**: A functional contact form that allows potential clients or employers to reach out directly.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js**: A React framework for building server-rendered or statically exported React applications with ease.
+- **Framer Motion**: A production-ready motion library for React, allowing you to create complex animations easily.
+- **Tailwind CSS**: A utility-first CSS framework for building custom designs without leaving your HTML.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 📦 Getting Started
 
-## Learn More
+To get a local copy of this project up and running, follow these steps.
 
-To learn more about Next.js, take a look at the following resources:
+### Prerequisites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Node.js** (v16.x or higher)
+- **npm** or **yarn** as your package manager
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 🚀 Installation
 
-## Deploy on Vercel
+1. **Clone the repository:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    git clone https://github.com/mo-hassann/developer-portfolio.git
+    cd developer-portfolio
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+2. **Install dependencies:**
+
+    Using npm:
+
+    ```bash
+    npm install
+    ```
+
+    Or using yarn:
+
+    ```bash
+    yarn install
+    ```
+
+3. **Start the development server:**
+
+    Using npm:
+
+    ```bash
+    npm run dev
+    ```
+
+    Or using yarn:
+
+    ```bash
+    yarn dev
+    ```
+
+    Open [http://localhost:3000](http://localhost:3000) to view the portfolio in your browser.
+
+## 📖 Usage
+
+### Running the app
+
+- **Development mode:** `npm run dev` or `yarn dev`
+- **Production mode:** `npm run build && npm start` or `yarn build && yarn start`
+
+### Customization
+
+To customize your portfolio:
+
+1. **Update Content**: Edit the content files in the `content` folder to update your profile, projects, skills, and contact information.
+2. **Change Styles**: Modify the Tailwind CSS styles in the `styles` folder to match your desired theme.
+3. **Add Animations**: Use Framer Motion components and hooks to add or customize animations throughout the portfolio.
+
+## 🤝 Contributing
+
+We welcome contributions to this project. To contribute:
+
+1. **Fork the repository.**
+2. **Create a new branch** (`git checkout -b feature/your-feature-name`).
+3. **Make your changes** and commit them (`git commit -m 'Add some feature'`).
+4. **Push to the branch** (`git push origin feature/your-feature-name`).
+5. **Open a pull request**.
+
+Please make sure to update tests as appropriate.
+
+## 📜 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
